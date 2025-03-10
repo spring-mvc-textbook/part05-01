@@ -10,7 +10,7 @@ LIMIT 및 OFFSET을 활용한 SQL 페이징 처리 방식을 설명합니다.
 MyBatis를 활용하여 페이징 쿼리를 구성하고, 프론트엔드에서 페이지네이션 UI를 구현하는 방법을 다룹니다.
 
 - 📖 교재: [https://wikidocs.net/267708](https://wikidocs.net/267708)
-- 💻 코드: [https://github.com/sung2ne/part05-01](https://github.com/sung2ne/part05-01)
+- 💻 코드: [https://github.com/spring-mvc-textbook/part05-01](https://github.com/spring-mvc-textbook/part05-01)
 
 ## 02. 게시글 검색 처리하기
 
@@ -20,4 +20,4 @@ MyBatis의 Dynamic SQL을 적용하여 검색 조건이 있을 때만 쿼리가 
 프론트엔드에서 검색 입력값을 받아 서버로 전달하는 방식과 검색 결과를 출력하는 방법을 다룹니다.
 
 - 📖 교재: [https://wikidocs.net/267709](https://wikidocs.net/267709)
-- 💻 코드: [https://github.com/sung2ne/part05-02](https://github.com/sung2ne/part05-02)
+- 💻 코드: [https://github.com/spring-mvc-textbook/part05-02](https://github.com/spring-mvc-textbook/part05-02)
