@@ -45,6 +45,7 @@
             POSTS
         ORDER BY
             ID DESC
+        LIMIT #{offset}, #{listCountPerPage}
         ]]>
     </select>
 

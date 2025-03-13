@@ -34,10 +34,11 @@ public class PostDao {
     }
 
     // 게시글 목록
-    public List<PostDto> list(int offset, int pageSize) {
+    public List<PostDto> list(int offset, int listCountPerPage) {
         Map<String, Object> params = new HashMap<>();
         params.put("offset", offset);
-        params.put("pageSize", pageSize);
+        params.put("offset", offset);
+        params.put("listCountPerPage", listCountPerPage);
 
         List<PostDto> posts = null;
 

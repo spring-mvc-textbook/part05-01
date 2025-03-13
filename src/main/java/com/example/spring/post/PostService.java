@@ -11,14 +11,14 @@ import com.example.spring.libs.Pagination;
 
 @Service
 public class PostService {
-
+    
     @Autowired
     PostDao postDao;
 
-    // 비밀번호 검증
-    private boolean verifyPassword(PostDto post) {
+    // 비밀번호 확인
+    public boolean verifyPassword(PostDto post) {
         PostDto originalPost = postDao.read(post.getId());
-        return originalPost != null && originalPost.getPassword().equals(post.getPassword());
+        return originalPost.getPassword().equals(post.getPassword());
     }
 
     // 게시글 등록
@@ -28,19 +28,19 @@ public class PostService {
     }
 
     // 게시글 목록
-    public Map<String, Object> list(int page, int pageSize) {
+    public Map<String, Object> list(int currentPage, int listCountPerPage, int pageCountPerPage) {
         // 전체 게시글 수 조회
         int totalCount = postDao.totalCount();
 
-        // 페이지네이션 정보 생성
-        Pagination pagination = new Pagination(page, pageSize, totalCount);
+        // 페이지네이션 객체 생성
+        Pagination pagination = new Pagination(currentPage, listCountPerPage, pageCountPerPage, totalCount);
 
-        // 페이징된 게시글 목록 조회
-        List<PostDto> postsVoList = postDao.list(pagination.offset(), pageSize);
+        // 페이지네이션 객체를 활용하여 게시글 목록 조회
+        List<PostDto> posts = postDao.list(pagination.offset(), listCountPerPage);
 
         // 결과 맵 생성
         Map<String, Object> result = new HashMap<>();
-        result.put("postsVoList", postsVoList);
+        result.put("posts", posts);
         result.put("pagination", pagination);
 
         return result;
@@ -53,22 +53,24 @@ public class PostService {
 
     // 게시글 수정
     public boolean update(PostDto post) {
-        // 비밀번호 검증
+        // 비밀번호 확인
         if (!verifyPassword(post)) {
             return false;
         }
 
+        // 게시글 수정
         int result = postDao.update(post);
         return result > 0;
     }
 
     // 게시글 삭제
     public boolean delete(PostDto post) {
-        // 비밀번호 검증
+        // 비밀번호 확인
         if (!verifyPassword(post)) {
             return false;
         }
 
+        // 게시글 삭제
         int result = postDao.delete(post.getId());
         return result > 0;
     }
